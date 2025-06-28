@@ -4,7 +4,7 @@ import MatchCard from './MatchCard';
 import { Filter } from 'lucide-react';
 
 const ScheduleModule: React.FC = () => {
-  const { filteredMatches, filterMatches, currentFilter } = useApp();
+  const { filteredMatches, filterMatches, currentFilter, setActiveTab } = useApp();
   const [showFilters, setShowFilters] = useState(false);
   
   const filterOptions = [
@@ -64,9 +64,8 @@ const ScheduleModule: React.FC = () => {
               key={match.id} 
               match={match} 
               showReserveButton
-              onReserve={(matchId) => {
+              onReserve={() => {
                 // Navigate to reservations tab and pre-select this match
-                const { setActiveTab } = useApp();
                 setActiveTab('reservations');
                 // This would ideally store the selected match ID for the reservation form
               }}

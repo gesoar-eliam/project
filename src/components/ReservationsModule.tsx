@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { Match, Reservation } from '../types';
-import { Check, X } from 'lucide-react';
+import { Match } from '../types';
+import { Check } from 'lucide-react';
 
 const ReservationsModule: React.FC = () => {
   const { matches, reservations, addReservation } = useApp();
@@ -157,6 +157,8 @@ const ReservationsModule: React.FC = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
+                    placeholder="Enter your name"
+                    title="Enter your name"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
@@ -171,6 +173,8 @@ const ReservationsModule: React.FC = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
+                    placeholder="Enter your email"
+                    title="Enter your email address"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
@@ -187,6 +191,8 @@ const ReservationsModule: React.FC = () => {
                     value={formData.seats}
                     onChange={handleInputChange}
                     required
+                    placeholder="Enter number of seats"
+                    title="Enter number of seats"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
@@ -200,6 +206,7 @@ const ReservationsModule: React.FC = () => {
                     value={formData.section}
                     onChange={handleInputChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    aria-label="Section"
                   >
                     <option value="A">Section A</option>
                     <option value="B">Section B</option>

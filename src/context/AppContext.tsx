@@ -67,7 +67,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             away: currentScore.away + awayScoreChange
           };
           
-          let newHighlights = [...(match.highlights || [])];
+          const newHighlights = [...(match.highlights || [])];
           if (homeScoreChange) {
             newHighlights.push(`Goal ${match.homeTeam.name} - ${Math.floor(Math.random() * 90 + 1)}'`);
           }

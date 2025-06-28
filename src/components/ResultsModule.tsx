@@ -3,7 +3,7 @@ import { useApp } from '../context/AppContext';
 import MatchCard from './MatchCard';
 
 const ResultsModule: React.FC = () => {
-  const { matches, filterMatches } = useApp();
+  const { matches } = useApp();
   
   // Get completed and live matches
   const completedMatches = matches.filter(match => match.status === 'completed');
