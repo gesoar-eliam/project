@@ -16,6 +16,15 @@ const MainContent: React.FC = () => {
         {activeTab === 'results' && <ResultsModule />}
         {activeTab === 'reservations' && <ReservationsModule />}
         {activeTab === 'info' && <InfoModule />}
+        {activeTab === 'login' && (
+          <div className="flex justify-center items-center h-screen">
+            <div className="max-w-md w-full bg-white p-6 rounded-lg shadow-md">
+              <h2 className="text-2xl font-bold mb-4 text-center">Iniciar sesión</h2>
+              <p className="text-gray-600 mb-4">Por favor, ingresa tus credenciales para continuar.</p>
+              {/* Aquí puedes incluir el componente de LoginForm si lo tienes */}
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );
