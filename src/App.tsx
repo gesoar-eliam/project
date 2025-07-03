@@ -5,6 +5,7 @@ import ScheduleModule from './components/ScheduleModule';
 import ResultsModule from './components/ResultsModule';
 import ReservationsModule from './components/ReservationsModule';
 import InfoModule from './components/InfoModule';
+import { LoginForm } from './components/LoginForm';
 
 const MainContent: React.FC = () => {
   const { activeTab } = useApp();
@@ -15,13 +16,14 @@ const MainContent: React.FC = () => {
         {activeTab === 'schedule' && <ScheduleModule />}
         {activeTab === 'results' && <ResultsModule />}
         {activeTab === 'reservations' && <ReservationsModule />}
+        {activeTab === 'login' && <LoginForm onLogin={() => {}} />}
         {activeTab === 'info' && <InfoModule />}
         {activeTab === 'login' && (
           <div className="flex justify-center items-center h-screen">
             <div className="max-w-md w-full bg-white p-6 rounded-lg shadow-md">
               <h2 className="text-2xl font-bold mb-4 text-center">Iniciar sesión</h2>
               <p className="text-gray-600 mb-4">Por favor, ingresa tus credenciales para continuar.</p>
-              {/* Aquí puedes incluir el componente de LoginForm si lo tienes */}
+              <LoginForm onLogin={() => {}} />
             </div>
           </div>
         )}
