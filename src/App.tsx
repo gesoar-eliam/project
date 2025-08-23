@@ -1,13 +1,33 @@
 import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import Header from './components/Header';
+import LoadingSpinner from './components/LoadingSpinner';
+import ErrorMessage from './components/ErrorMessage';
 import ScheduleModule from './components/ScheduleModule';
 import ResultsModule from './components/ResultsModule';
 import ReservationsModule from './components/ReservationsModule';
 import InfoModule from './components/InfoModule';
 
 const MainContent: React.FC = () => {
-  const { activeTab } = useApp();
+  const { activeTab, loading, error, refreshData } = useApp();
+
+  if (loading) {
+    return (
+      <main className="flex-grow bg-gray-50 flex items-center justify-center">
+        <LoadingSpinner />
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="flex-grow bg-gray-50 flex items-center justify-center">
+        <div className="max-w-md w-full mx-4">
+          <ErrorMessage message={error} onRetry={refreshData} />
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="flex-grow bg-gray-50">

@@ -1,27 +1,34 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Match, Reservation } from '../types';
-import { matches as initialMatches } from '../data';
+import { apiService } from '../services/api';
+import { useMatches, useReservations } from '../hooks/useApi';
 
 interface AppContextType {
   matches: Match[];
   filteredMatches: Match[];
   reservations: Reservation[];
+  loading: boolean;
+  error: string | null;
   activeTab: string;
   setActiveTab: (tab: string) => void;
   filterMatches: (filter: string) => void;
   currentFilter: string;
   addReservation: (reservation: Omit<Reservation, 'id' | 'confirmed'>) => void;
-  updateMatchStatus: () => void;
+  refreshData: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [matches, setMatches] = useState<Match[]>(initialMatches);
-  const [filteredMatches, setFilteredMatches] = useState<Match[]>(initialMatches);
-  const [reservations, setReservations] = useState<Reservation[]>([]);
+  const { data: matches = [], loading: matchesLoading, error: matchesError, refetch: refetchMatches } = useMatches();
+  const { data: reservations = [], loading: reservationsLoading, error: reservationsError, refetch: refetchReservations } = useReservations();
+  
+  const [filteredMatches, setFilteredMatches] = useState<Match[]>([]);
   const [activeTab, setActiveTab] = useState('schedule');
   const [currentFilter, setCurrentFilter] = useState('all');
+  
+  const loading = matchesLoading || reservationsLoading;
+  const error = matchesError || reservationsError;
 
   // Function to filter matches
   const filterMatches = (filter: string) => {
@@ -41,59 +48,31 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   // Function to add a reservation
-  const addReservation = (reservation: Omit<Reservation, 'id' | 'confirmed'>) => {
-    const newReservation: Reservation = {
-      ...reservation,
-      id: `res-${Date.now()}`,
-      confirmed: true
-    };
-    setReservations([...reservations, newReservation]);
+  const addReservation = async (reservation: Omit<Reservation, 'id' | 'confirmed'>) => {
+    try {
+      await apiService.createReservation(reservation);
+      refetchReservations();
+    } catch (error) {
+      console.error('Failed to create reservation:', error);
+    }
   };
 
-  // Function to simulate real-time updates (for demo purposes)
-  const updateMatchStatus = () => {
-    // This function would typically connect to a real-time API
-    // For this demo, we'll just simulate updates
-    const updatedMatches = matches.map(match => {
-      if (match.status === 'live') {
-        // Simulate score changes for live matches
-        const homeScoreChange = Math.random() > 0.9 ? 1 : 0;
-        const awayScoreChange = Math.random() > 0.9 ? 1 : 0;
-        
-        if (homeScoreChange || awayScoreChange) {
-          const currentScore = match.score || { home: 0, away: 0 };
-          const newScore = {
-            home: currentScore.home + homeScoreChange,
-            away: currentScore.away + awayScoreChange
-          };
-          
-          let newHighlights = [...(match.highlights || [])];
-          if (homeScoreChange) {
-            newHighlights.push(`Goal ${match.homeTeam.name} - ${Math.floor(Math.random() * 90 + 1)}'`);
-          }
-          if (awayScoreChange) {
-            newHighlights.push(`Goal ${match.awayTeam.name} - ${Math.floor(Math.random() * 90 + 1)}'`);
-          }
-          
-          return { ...match, score: newScore, highlights: newHighlights };
-        }
-      }
-      return match;
-    });
-    
-    setMatches(updatedMatches);
-    filterMatches(currentFilter);
+  // Function to refresh all data
+  const refreshData = () => {
+    refetchMatches();
+    refetchReservations();
   };
 
-  // Simulate real-time updates
+  // Auto-refresh data every 30 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      updateMatchStatus();
-    }, 15000); // Update every 15 seconds
+      refreshData();
+    }, 30000);
     
     return () => clearInterval(interval);
-  }, [matches, currentFilter]);
+  }, []);
 
+  // Update filtered matches when matches change
   useEffect(() => {
     filterMatches(currentFilter);
   }, [matches]);
@@ -104,12 +83,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         matches,
         filteredMatches,
         reservations,
+        loading,
+        error,
         activeTab,
         setActiveTab,
         filterMatches,
         currentFilter,
         addReservation,
-        updateMatchStatus
+        refreshData
       }}
     >
       {children}
