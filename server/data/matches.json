@@ -1,0 +1,102 @@
+[
+  {
+    "id": "1",
+    "homeTeamId": "1",
+    "awayTeamId": "2",
+    "date": "2025-06-12",
+    "time": "15:00",
+    "venueId": "1",
+    "stage": "Group Stage",
+    "status": "upcoming"
+  },
+  {
+    "id": "2",
+    "homeTeamId": "3",
+    "awayTeamId": "4",
+    "date": "2025-06-13",
+    "time": "18:00",
+    "venueId": "2",
+    "stage": "Group Stage",
+    "status": "upcoming"
+  },
+  {
+    "id": "3",
+    "homeTeamId": "5",
+    "awayTeamId": "6",
+    "date": "2025-06-14",
+    "time": "20:00",
+    "venueId": "3",
+    "stage": "Group Stage",
+    "score": {
+      "home": 2,
+      "away": 1
+    },
+    "status": "live",
+    "highlights": [
+      "Goal Spain - 23'",
+      "Goal England - 45'",
+      "Goal Spain - 78'"
+    ]
+  },
+  {
+    "id": "4",
+    "homeTeamId": "7",
+    "awayTeamId": "8",
+    "date": "2025-06-15",
+    "time": "17:00",
+    "venueId": "4",
+    "stage": "Group Stage",
+    "score": {
+      "home": 3,
+      "away": 2
+    },
+    "status": "completed",
+    "highlights": [
+      "Goal Portugal - 15'",
+      "Goal Belgium - 25'",
+      "Goal Portugal - 40'",
+      "Goal Belgium - 65'",
+      "Goal Portugal - 88'"
+    ]
+  },
+  {
+    "id": "5",
+    "homeTeamId": "1",
+    "awayTeamId": "3",
+    "date": "2025-06-20",
+    "time": "15:00",
+    "venueId": "1",
+    "stage": "Quarter-finals",
+    "status": "upcoming"
+  },
+  {
+    "id": "6",
+    "homeTeamId": "2",
+    "awayTeamId": "4",
+    "date": "2025-06-21",
+    "time": "18:00",
+    "venueId": "2",
+    "stage": "Quarter-finals",
+    "status": "upcoming"
+  },
+  {
+    "id": "7",
+    "homeTeamId": "5",
+    "awayTeamId": "7",
+    "date": "2025-06-22",
+    "time": "20:00",
+    "venueId": "3",
+    "stage": "Quarter-finals",
+    "status": "upcoming"
+  },
+  {
+    "id": "8",
+    "homeTeamId": "6",
+    "awayTeamId": "8",
+    "date": "2025-06-23",
+    "time": "17:00",
+    "venueId": "4",
+    "stage": "Quarter-finals",
+    "status": "upcoming"
+  }
+]

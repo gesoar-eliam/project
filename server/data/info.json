@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "title": "Tournament Rules",
+    "content": "The World Cup follows the standard FIFA rules for international competitions. The tournament consists of a group stage followed by knockout rounds. Teams are awarded 3 points for a win, 1 for a draw, and 0 for a loss in the group stage. The top two teams from each group advance to the knockout stage where matches cannot end in a draw and extra time and penalties may be used to determine a winner.",
+    "category": "rules"
+  },
+  {
+    "id": "2",
+    "title": "Participating Teams",
+    "content": "This World Cup features 32 teams from around the globe, divided into 8 groups of 4 teams each. The teams were selected through a rigorous qualification process spanning over two years.",
+    "category": "teams"
+  },
+  {
+    "id": "3",
+    "title": "Stadium Information",
+    "content": "The tournament will be hosted across 8 state-of-the-art stadiums in various cities. Each venue has been renovated or built specifically for this event, with capacities ranging from 40,000 to 80,000 spectators.",
+    "category": "venues"
+  },
+  {
+    "id": "4",
+    "title": "World Cup History",
+    "content": "The FIFA World Cup is the most prestigious soccer tournament in the world. Held every four years, it brings together the top national teams from around the globe. The first tournament was hosted by Uruguay in 1930, and it has since grown to become the most widely viewed sporting event in the world.",
+    "category": "history"
+  },
+  {
+    "id": "5",
+    "title": "Ticketing FAQ",
+    "content": "Tickets for matches can be purchased through our official website or authorized resellers. Prices vary depending on the match and seating category. All tickets are digital and can be accessed through our mobile app.",
+    "category": "faq"
+  }
+]
