@@ -5,6 +5,7 @@ export interface ApiResponse<T> {
   error?: string;
 }
 
+<<<<<<< HEAD
 export interface MatchUpdate {
   // Define the properties that can be updated in a match
   // For example:
@@ -28,6 +29,8 @@ export interface Reservation {
   // Add other fields as needed
 }
 
+=======
+>>>>>>> 99186b488ca0d2cf44688d1756483479758cff97
 class ApiService {
   private async request<T>(endpoint: string, options?: RequestInit): Promise<ApiResponse<T>> {
     try {
@@ -61,27 +64,51 @@ class ApiService {
     return this.request('/venues');
   }
 
+<<<<<<< HEAD
+=======
+  // Matches
+  async getMatches() {
+    return this.request('/matches');
+  }
+
+>>>>>>> 99186b488ca0d2cf44688d1756483479758cff97
   async getMatch(id: string) {
     return this.request(`/matches/${id}`);
   }
 
+<<<<<<< HEAD
   async updateMatch(id: string, data: MatchUpdate) {
+=======
+  async updateMatch(id: string, data: any) {
+>>>>>>> 99186b488ca0d2cf44688d1756483479758cff97
     return this.request(`/matches/${id}`, {
       method: 'PUT',
       body: JSON.stringify(data),
     });
   }
 
+<<<<<<< HEAD
   async createReservation(reservation: Reservation) {
+=======
+  // Reservations
+  async getReservations() {
+    return this.request('/reservations');
+  }
+
+  async createReservation(reservation: any) {
+>>>>>>> 99186b488ca0d2cf44688d1756483479758cff97
     return this.request('/reservations', {
       method: 'POST',
       body: JSON.stringify(reservation),
     });
   }
+<<<<<<< HEAD
   // Reservations
   async getReservations() {
     return this.request('/reservations');
   }
+=======
+>>>>>>> 99186b488ca0d2cf44688d1756483479758cff97
 
   async getReservation(id: string) {
     return this.request(`/reservations/${id}`);
