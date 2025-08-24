@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { Match, Reservation } from '../types';
 import { apiService } from '../services/api';
-import { useMatches, useReservations } from '../hooks/useApi';
+import { useReservations } from '../hooks/useApi';
 
 interface AppContextType {
   matches: Match[];
@@ -20,7 +20,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { data: matches = [], loading: matchesLoading, error: matchesError, refetch: refetchMatches } = useMatches();
+  const { data: matches = [], loading: matchesLoading, error: matchesError, refetch: refetchMatches } = matches();
   const { data: reservations = [], loading: reservationsLoading, error: reservationsError, refetch: refetchReservations } = useReservations();
   
   const [filteredMatches, setFilteredMatches] = useState<Match[]>([]);
@@ -57,48 +57,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
-<<<<<<< HEAD
-  // Function to simulate real-time updates (for demo purposes)
-  const updateMatchStatus = React.useCallback(() => {
-    // This function would typically connect to a real-time API
-    // For this demo, we'll just simulate updates
-    const updatedMatches = matches.map(match => {
-      if (match.status === 'live') {
-        // Simulate score changes for live matches
-        const homeScoreChange = Math.random() > 0.9 ? 1 : 0;
-        const awayScoreChange = Math.random() > 0.9 ? 1 : 0;
-        
-        if (homeScoreChange || awayScoreChange) {
-          const currentScore = match.score || { home: 0, away: 0 };
-          const newScore = {
-            home: currentScore.home + homeScoreChange,
-            away: currentScore.away + awayScoreChange
-          };
-          
-          const newHighlights = [...(match.highlights || [])];
-          if (homeScoreChange) {
-            newHighlights.push(`Goal ${match.homeTeam.name} - ${Math.floor(Math.random() * 90 + 1)}'`);
-          }
-          if (awayScoreChange) {
-            newHighlights.push(`Goal ${match.awayTeam.name} - ${Math.floor(Math.random() * 90 + 1)}'`);
-          }
-          
-          return { ...match, score: newScore, highlights: newHighlights };
-        }
-      }
-      return match;
-    });
-    
-    setMatches(updatedMatches);
-    filterMatches(currentFilter);
-  }, [matches, currentFilter, filterMatches]);
-=======
   // Function to refresh all data
   const refreshData = () => {
     refetchMatches();
     refetchReservations();
   };
->>>>>>> 99186b488ca0d2cf44688d1756483479758cff97
 
   // Auto-refresh data every 30 seconds
   useEffect(() => {
