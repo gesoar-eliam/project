@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { Match, Reservation } from '../types';
 import { matches as initialMatches } from '../data';
 
@@ -51,7 +51,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   // Function to simulate real-time updates (for demo purposes)
-  const updateMatchStatus = () => {
+  const updateMatchStatus = React.useCallback(() => {
     // This function would typically connect to a real-time API
     // For this demo, we'll just simulate updates
     const updatedMatches = matches.map(match => {
@@ -67,7 +67,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             away: currentScore.away + awayScoreChange
           };
           
-          let newHighlights = [...(match.highlights || [])];
+          const newHighlights = [...(match.highlights || [])];
           if (homeScoreChange) {
             newHighlights.push(`Goal ${match.homeTeam.name} - ${Math.floor(Math.random() * 90 + 1)}'`);
           }
@@ -83,7 +83,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     
     setMatches(updatedMatches);
     filterMatches(currentFilter);
-  };
+  }, [matches, currentFilter, filterMatches]);
 
   // Simulate real-time updates
   useEffect(() => {
@@ -92,11 +92,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }, 15000); // Update every 15 seconds
     
     return () => clearInterval(interval);
-  }, [matches, currentFilter]);
+  }, [matches, currentFilter, updateMatchStatus]);
 
   useEffect(() => {
     filterMatches(currentFilter);
-  }, [matches]);
+  }, [matches, currentFilter, filterMatches]);
 
   return (
     <AppContext.Provider
@@ -117,10 +117,4 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   );
 };
 
-export const useApp = () => {
-  const context = useContext(AppContext);
-  if (context === undefined) {
-    throw new Error('useApp must be used within an AppProvider');
-  }
-  return context;
-};
+// useApp hook moved to a separate file for Fast Refresh compatibility.

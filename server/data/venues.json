@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "name": "Maracanã Stadium",
+    "city": "Rio de Janeiro",
+    "capacity": 78838,
+    "image": "https://images.pexels.com/photos/270085/pexels-photo-270085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "id": "2",
+    "name": "Lusail Stadium",
+    "city": "Lusail",
+    "capacity": 80000,
+    "image": "https://images.pexels.com/photos/243587/pexels-photo-243587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "id": "3",
+    "name": "Wembley Stadium",
+    "city": "London",
+    "capacity": 90000,
+    "image": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "id": "4",
+    "name": "Camp Nou",
+    "city": "Barcelona",
+    "capacity": 99354,
+    "image": "https://images.pexels.com/photos/3628912/pexels-photo-3628912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  }
+]

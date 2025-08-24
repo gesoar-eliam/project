@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Brazil",
+    "flag": "https://images.pexels.com/photos/1026421/pexels-photo-1026421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "group": "A"
+  },
+  {
+    "id": "2",
+    "name": "Argentina",
+    "flag": "https://images.pexels.com/photos/3621185/pexels-photo-3621185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "group": "A"
+  },
+  {
+    "id": "3",
+    "name": "Germany",
+    "flag": "https://images.pexels.com/photos/4551288/pexels-photo-4551288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "group": "B"
+  },
+  {
+    "id": "4",
+    "name": "France",
+    "flag": "https://images.pexels.com/photos/1549326/pexels-photo-1549326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "group": "B"
+  },
+  {
+    "id": "5",
+    "name": "Spain",
+    "flag": "https://images.pexels.com/photos/3608311/pexels-photo-3608311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "group": "C"
+  },
+  {
+    "id": "6",
+    "name": "England",
+    "flag": "https://images.pexels.com/photos/272815/pexels-photo-272815.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "group": "C"
+  },
+  {
+    "id": "7",
+    "name": "Portugal",
+    "flag": "https://images.pexels.com/photos/11361098/pexels-photo-11361098.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "group": "D"
+  },
+  {
+    "id": "8",
+    "name": "Belgium",
+    "flag": "https://images.pexels.com/photos/8378334/pexels-photo-8378334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "group": "D"
+  }
+]
